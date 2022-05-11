@@ -3,7 +3,7 @@ from turtle import *
 from freegames import vector
 
 ball = vector(-200, -200)
-speed = vector(0, 0)
+speed = vector(10, 10)
 targets = []
 
 def tap(x, y):
@@ -40,10 +40,13 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= 1 # Aumentar velocidad de las bolas
+        if (target.x < -200): # Asignar nueva posicion a las bolas que salgan de pantalla 
+            target.x= 200 # Manda al inicio del cuadro a la bola
+            target.y= randrange(-150, 150) #Asigna un lugar aleatorio en y 
 
     if inside(ball):
-        speed.y -= 0.35
+        speed.y -= 0.10  #Aumenta velocidad de la bala
         ball.move(speed)
 
     dupe = targets.copy()
